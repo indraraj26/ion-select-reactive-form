@@ -7,8 +7,30 @@
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+  <form [formGroup]="myForm" (submit)="onSubmit()">
+    <div>
+      <ion-label position="stacked">
+                    Sector
+                </ion-label>
+                <ion-select id="sector" formControlName="sector" (ionChange)="onChange()">
+                    <ion-select-option value="" selected>Select Sector</ion-select-option>
+                    <ion-select-option *ngFor="let item of data_sector" [value]="item.value">{{item.name}}</ion-select-option>
+                </ion-select>
+    </div>
+
+ <div>
+   
+                <ion-label position="stacked">
+                   Sub Sector
+                </ion-label>
+                <ion-select id="sub" formControlName="sub_sector"> 
+                    <ion-select-option value="" selected>Select Sub-Sector</ion-select-option>
+                    <ion-select-option *ngFor="let sub of data_sub_sector" [value]="sub.value">{{sub.name}}</ion-select-option>
+                </ion-select>
+
+ </div>
+ <div> 
+   <ion-button type="submit">Submit</ion-button>
+ </div>
+              </form>
 </ion-content>
